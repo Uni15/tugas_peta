@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DESAKU</title>
+    <link rel="stylesheet" href="assets/leaflet/leaflet.css" />
+    <script src="assets/leaflet/leaflet.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="assets/desa_sukaraja.js"></script>
+    <script>
+      const map = L.map("map").setView([-8.6648545, 116.2979519, 15.63], 15);
+
+      const tiles = L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }
+      ).addTo(map);
+      L.geoJSON(gis).addTo(map);
+      //menampilkan desa atau lurah
+      var desa_sukaraja = L.marker([-8.688011549164207, 116.42626958392383,15]).addTo(map);
+      function onMapClick(e) {
+        alert("you clicked the maps at" + e.latling);
+      }
+      map.on("click,onMapClick");
+      //menampilkan sekolah
+      var desa_sukaraja = L.marker([
+      -8.731879116453571, 116.35814591272658
+      ]).addTo(map);
+      function onMapClick(e) {
+        alert("you clicked the maps at" + e.latling);
+      }
+      map.on("click,onMapClick");
+      //menampilkan sekolah dasar
+      var desa_sukaraja = L.marker([
+      -8.752051767220369, 116.35282045266308,
+      ]).addTo(map);
+
+      map.on("click,onMapClick");
+    </script>
+  </body>
+</html>
